@@ -1,24 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
     <h2 :style="{color:fontColor}">{{message}}</h2>
-    <!-- :style={设置的样式名:样式} -->
+    <!-- :style={css的属性名:css的属性值  } -->
   </div>
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
     const app = new Vue({
-      el:"#app",
-      data:{
-        message:"hello",
-        fontColor:"red"
+      el: "#app",
+      data: {
+        message: "hello",
+        fontColor: "red"
       }
     })
   </script>
 </body>
+
 </html>
