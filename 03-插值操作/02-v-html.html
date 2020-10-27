@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2 v-html="htmlData">我不是很好啊</h2>
+    <!-- 
+      v-html
+        -> 该指令后面往往会跟上一个string类型
+        -> 会将string的html解析出来并且渲染
+        -> 并且会将改标签中的所有内容全部覆盖掉
+    -->
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        htmlData:"<p>你好啊</p>"
+      }
+    })
+  </script>
+</body>
+
+</html>

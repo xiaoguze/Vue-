@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+			{{message}}
+		</div>
+    <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+    <script>
+        /*
+            Vue的生命周期
+                beforeCreate() => 实例创建前
+        */
+        const app = new Vue({
+            el:"#app",
+						data:{
+							message:"helo"
+						},
+						beforeCreate(){ // 实例创建前 使用的生命周期函数
+							console.log("beforeCreate => 实例创建前");
+						},
+						created() {
+							console.log('created => 实例创建完成');
+						},
+						beforeMount() {
+							console.log("beforeMount => 实例挂载前");
+						},
+						mounted() {
+							this.message = "你好啊"
+							console.log('mounted => 实例挂载完成')
+						},
+						beforeUpdate() {
+							console.log("beforeUpdate => 数据更新前")
+						},
+						updated() {// 当某个数据发生变化时 这个生命周期就会执行
+							console.log('数据更新变化了')
+						},
+						beforeDestroy() {
+							console.log("Vue实例销毁前")
+						},
+						destroyed() {
+							console.log("Vue实例被销毁了")
+						}
+        })
+    </script>
+</body>
+</html>

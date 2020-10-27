@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+      v-text 
+       -> 跟着一个string 会将这个string 渲染刀指定标签中 这个标签中的内容会被覆盖掉
+    -->
+    <h2>{{message}}</h2>
+    <h2 v-text="message">我不是很好啊</h2>
+    <!-- 会将里面的内容覆盖掉 -->
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+   const app = new Vue({
+     el:"#app",
+     data:{
+      message:"hellos"
+     }
+   })
+  </script>
+</body>
+</html>

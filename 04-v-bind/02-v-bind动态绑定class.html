@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active{
+      color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app" >
+    <ul>
+      <li v-for="(item,index) in movies" :class="{active:currentIndnx === index}" @click="changeIndexClick(index)" >
+        <!-- 
+          :class={类名:Boolean}
+          当 Boolean为true 是这个 类就生效
+          Boolean为false 是 这个类就不会生效
+        -->
+        {{item}}
+      </li>
+    </ul>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        movies:["海尔兄弟","海王","上海"],
+        currentIndnx:0
+      },
+      methods:{
+        changeIndexClick(index){
+          this.currentIndnx = index
+        }
+      }
+    })
+  </script>
+</body>
+</html>

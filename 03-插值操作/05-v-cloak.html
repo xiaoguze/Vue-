@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app" v-cloak>
+    <!-- v-cloak => 当 Vue 没有解析完毕时 => 这个属性就会存在 当Vue解析完成时=> 这个属性就会消失 可以通过 css 去设置 -->
+    <h2>{{message}}</h2>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    setTimeout(() => {
+      const app = new Vue({
+        el: "#app",
+        data: {
+          message: "hello"
+        }
+      })
+    }, 1000);
+  </script>
+</body>
+<style>
+  [v-cloak]{
+    display: none;
+  }
+</style>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="(item,index) in movies" :class="{active:currentIndex === index}" @click="changeIndexClick(index)">
+        {{item}}</li>
+    </ul>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        movies: ["上海", "深圳", "杭州"],
+        currentIndex: 0
+      },
+      methods: {
+        changeIndexClick(index) {
+          this.currentIndex = index
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
