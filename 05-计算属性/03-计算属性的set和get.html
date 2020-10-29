@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <h2>{{fullName}}</h2>
+    <h2>{{fullName2}}</h2>
+    <h2>{{hello()}}</h2>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        firstName:"Kobe",
+        lastName:"Bryant"
+      },
+      mounted(){
+        this.fullName2 = 'hello'
+      },
+      methods:{
+        hello(){
+          console.log(this.fullName2); // 计算属性 不止用于 => html中 也可以用于其他的方法中和生命周期中
+        }
+      },
+      computed:{
+        // 计算属性的 setter和getter
+        fullName:function(){ //这是计算属性的简写方式
+          return this.firstName + " " + this.lastName
+        },
+        fullName2:{
+          set:function(newValue){ // 当我们 给 计算属性 重新赋值时 => 会将值 传入到 set 方法中的参数中
+            console.log(newValue);
+          },
+          get:function(){
+            // 计算属性 最终展示的值  是 有 get 方法决定的
+            return 'abc'
+          }
+        }
+      }
+    })
+  </script>
+</body>
+</html>

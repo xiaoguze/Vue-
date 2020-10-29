@@ -10,6 +10,11 @@
 <body>
   <div id="app">
     总价格:{{totalAllPrice}}
+    总价格:{{totalAllPrice}}
+    总价格:{{totalAllPrice}}
+    总价格:{{totalAllPrice}}
+    总价格:{{totalAllPrice}}
+    总价格:{{totalAllPrice}}
   </div>
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
@@ -40,7 +45,9 @@
         ]
       },
       computed:{
+        // 计算属性拥有 => 缓存机制 当执行一次就会被缓存  方法不一样 每当方法执行一次 就会被调用一次 并不会有缓存的机制
         totalAllPrice:function(){
+          console.log(1) // 只会打印一次
           return this.books.reduce((a,b) => a+=b.price ,0)
         }
       }
