@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- v-on:事件名="事件函数"  语法糖 @ -->
+    <button @click="hello">hello</button>
+
+    <!-- v-on 传入参数 不带小括号写法 默认将 事件对象传入  -->
+    <button @click="noCclick">不带小括号写法</button>
+
+    <!-- v-on 当我们需要 event 对象 并且还需要其他参数 可以使用 $event 将事件对象传入 -->
+    <button @click="click2('123',$event)">传入参数和事件对象</button>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      methods:{
+        hello(){
+          console.log("hello");
+        },
+        noCclick(e){
+          console.log(e);
+        },
+        click2(str,e){
+          console.log(str , e);
+        }
+      }
+    })
+  </script>
+</body>
+</html>

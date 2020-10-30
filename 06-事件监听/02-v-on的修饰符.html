@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <!-- 
+        v-on的修饰词
+          .stop => 调用 event.stopPropagation()  取消事件冒泡
+          .prevent => 调用 event.preventDefault() 取消默认事件
+          .{keyCode|keyAlias} => 指定某个特殊键盘按键才会触发
+          .native => 监听组件根元素的原生事件
+          .once => 只会触发一次回调
+
+     -->
+    <div @click="divClick">
+      <!-- 当父子元素事件相同时 =>  会产生事件冒泡  我们可以使用 .stop 来取消事件冒泡 -->
+      <button @click.stop="btnClick">按钮</button>
+    </div>
+
+    <form action="https://www.baidu.com">
+      <!-- 当 元素本身有一些默认事件时 =>  我们可以使用 .prevent 来取消元素本身的默认事件 -->
+      <input type="submit" value="提交" @click.prevent="submitClick">
+    </form>
+
+    <!-- <input type="text" @keyup.enter="keyupEnter"> -->
+    <!-- {keyCode|keyAlias}  指定某一个按键  -->
+    <input type="text" @keyup.13="keyupEnter">
+
+    <!-- 某些特殊场景 =>  可以使用 .once 修饰符来使用 这个回调函数只会执行一次 -->
+    <button @click.once="onceClick">我只会触发一次哦</button>
+
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      methods: {
+        divClick() {
+          console.log("divClick");
+        },
+        btnClick() {
+          console.log("btnClick");
+        },
+        submitClick() {
+          console.log("submitClick");
+        },
+        keyupEnter() {
+          console.log("我只有回车才能触发哦");
+        },
+        onceClick(){
+          console.log("我只会触发一次哦");
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
