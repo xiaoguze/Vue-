@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>Document</title>
+</head>
+<body>
+<div id="app">
+  <ul>
+    <!--  v-for 遍历数组时  只有一个 变量进行遍历时 这个变量的值就是每一个元素    -->
+    <li v-for="item in citys">内容是:{{item}}</li>
+  </ul>
+
+
+  <ul>
+    <!--  当 两个变量 进行 for循环时 第一个值 接受的是 每一次循环的内容 第二个值 接受的是 每一次循环这个元素在这个数组中的 下标  -->
+    <li v-for="(item , index) in citys">内容是: {{item}} 下标是: {{index}}</li>
+  </ul>
+
+</div>
+<script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            citys: ["上海", "杭州", "北京", "广州", "深圳"]
+        }
+    })
+</script>
+</body>
+</html>
