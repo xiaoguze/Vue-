@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <ul>
+      <li v-for="item in letter">{{item}}</li>
+    </ul>
+    <button @click="btnClick">添加</button>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        letter: ['A', 'B', 'C', 'D', 'E']
+      },
+      methods: {
+        btnClick() {
+          // push  方法是响应式的
+          // this.letter.push("F")
+          
+          // pop  
+          // this.letter.pop()
+
+          // shift
+          // this.letter.shift()
+
+          // unshift
+          // this.letter.unshift("Q")
+
+          // splice 
+          // this.letter.splice(1,0,"Q")
+
+          // sort
+
+
+          //reverse
+
+          // // 通过索引值修改数组中的元素
+          // this.letter[5] = 'F'
+          // // 这边的数据已经发生变化了 但是界面是没有更新的
+          // console.log(this.letter)            
+          // // 当某一个数据不是响应式的情况下  可以使用 Vue.set(data,index,newValue) 让这个数据成为响应式
+          // Vue.set(this.letter)
+            
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
