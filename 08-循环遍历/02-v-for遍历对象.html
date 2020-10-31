@@ -11,8 +11,18 @@
 <div id="app">
   <!-- v-for 遍历对象 -->
   <ul>
-    <!--  当我们只有一个  -->
+    <!--  当我们只有一个 值进行遍历循环时 => 我们拿到的是这个对象的每个属性的值  -->
     <li v-for="value in user">{{value}}</li>
+  </ul>
+
+  <ul>
+    <!--  当我们使用 两个值 进行  循环遍历时 =>  第一个值 拿到每个属性的属性值 =>  第二个拿到的值时 每个属性名  -->
+    <li v-for="(value , key ) in user">属性名 : {{key}} - 属性值 : {{value}}</li>
+  </ul>
+
+  <ul>
+    <!--  当我们使用 3个值 进行 循环遍历时 => 第一个值 拿到每个属性的属性值 => 第二个拿到的值是 每个属性名 => 第三个 拿到的值 是 每个属性 在这个对象中下标值  -->
+    <li v-for="(value , key , index) in user">属性名 : {{key}} - 属性值 : {{value}} - 下标值 : {{index}}</li>
   </ul>
 </div>
 <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
