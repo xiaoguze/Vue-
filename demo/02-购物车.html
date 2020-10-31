@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+        name="viewport">
+  <meta content="ie=edge" http-equiv="X-UA-Compatible">
+  <title>Document</title>
+  <style>
+    table{
+      text-align: center;
+      border-collapse: collapse;
+    }
+    th,td{
+      border: 1px solid;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+<div id="app">
+  <table>
+    <thead>
+    <tr>
+      <th v-for="item in thData">{{item}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr v-for="(item,index) in tdData">
+      <td>{{index+1}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.time}}</td>
+      <td>{{item.price | priceToString}}</td>
+      <td><button @click="add(index)">+</button> {{item.count}} <button @click="sub(index)" :disabled="item.count <= 0">-</button></td>
+      <td><button @click="remove(index)">删除</button></td>
+    </tr>
+    </tbody>
+  </table>
+  <h2>总价格:{{totalPrice | priceToString}}</h2>
+</div>
+<script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+<script>
+    const app = new Vue({
+        el: "#app",
+        data: {
+            thData: ['', '书籍名称', '出版日期', '价格', '购买数量', '操作'],
+            tdData:[
+                {
+                    name:'<算法导论>',
+                    time:"2006-9",
+                    price:85,
+                    count:0
+                },
+                {
+                    name:'<UNINX编程艺术>',
+                    time:"2006-2",
+                    price:59,
+                    count:0
+                },
+                {
+                    name:'<编程珠玑>',
+                    time:"2008-10",
+                    price:39,
+                    count:0
+                },
+                {
+                    name:'<代码大全>',
+                    time:"2006-3",
+                    price:128,
+                    count:0
+                },
+
+            ]
+        },
+        methods:{
+            remove(index){
+                this.tdData.splice(index,1)
+            },
+            add(index){
+                this.tdData[index].count++
+            },
+            sub(index){
+
+                this.tdData[index].count--
+            }
+        },
+        filters:{
+            priceToString(value){
+                return "$" + value.toFixed(2)
+            }
+        },
+        computed:{
+            totalPrice(){
+               return this.tdData.reduce((a,b) =>(a+=b.price),0)
+            }
+        }
+    })
+</script>
+</body>
+</html>
