@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <label for="male">
+      <input type="radio" id="male" name="sex" value="男" v-model="sex">男
+      <!-- v-model 绑定的 会将 value属性值 获取到  -->
+    </label>
+    <label for="famale">
+      <input type="radio" id="famale" name="sex" value="女" v-model="sex">女
+    </label>
+    <br>
+    {{sex}}
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:"#app",
+      data:{
+        sex:"男"
+      }
+    })
+  </script>
+</body>
+</html>

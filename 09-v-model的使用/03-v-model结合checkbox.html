@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <label for="agree">
+      <input type="checkbox" name="agree" id="agree" v-model="isAgree">同意协议
+      <!-- v-model 与 checkbox 结合使用时 =>  返回的是 布尔类型的值  单选 -->
+    </label>
+
+
+    <!-- 多选 -->
+    <input type="checkbox" name="" id="" value="篮球" v-model="hobbies">篮球
+    <input type="checkbox" name="" id="" value="足球" v-model="hobbies">足球
+    <input type="checkbox" name="" id="" value="乒乓球" v-model="hobbies">乒乓球
+    <input type="checkbox" name="" id="" value="羽毛球" v-model="hobbies">羽毛球
+    <h2>{{hobbies}}</h2>
+    <!-- 多选的时候 => 会将 value 值放进一个数组中 然后  -->
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        isAgree: false,
+        hobbies:[]
+      }
+    })
+  </script>
+</body>
+
+</html>
