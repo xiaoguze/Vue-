@@ -8,12 +8,20 @@
 <body>
   <div id="app">
     <!-- select => 也分为单选和多选 -->
+    <select name="" id="" v-model="friust">
+      <option value="苹果">苹果</option>
+      <option value="橘子">橘子</option>
+      <option value="火龙果">火龙果</option>
+      <option value="雪梨">雪梨</option>
+    </select>
+    {{friust}}
   </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
     const app = new Vue({
       el:"#app",
       data:{
-        message:""
+          friust:""
       }
     })
   </script>
