@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <!-- 
+        v-model 的修饰符
+          .lazy => 会让数据发生变化延迟到失去焦点或者回车时才更新
+          .number => 可以让输入框中的输入的内容自动转成数字类型
+          .trim => 可以过滤内容左右两边的空格
+     -->
+
+     <input type="text" v-model.lazy="message">
+    {{message}}
+     <input type="text" v-model.number="num">
+     {{num}}
+     <input type="text" v-model.trim="content">
+     {{content}}
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el:'#app',
+      data:{
+        message:"hello",
+        num:0,
+        content:''
+      }
+    })
+  </script>
+</body>
+</html>

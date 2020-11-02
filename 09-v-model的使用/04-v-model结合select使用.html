@@ -2,28 +2,38 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <title>Document</title>
 </head>
 <body>
-  <div id="app">
-    <!-- select => 也分为单选和多选 -->
-    <select name="" id="" v-model="friust">
-      <option value="苹果">苹果</option>
-      <option value="橘子">橘子</option>
-      <option value="火龙果">火龙果</option>
-      <option value="雪梨">雪梨</option>
-    </select>
-    {{friust}}
-  </div>
-  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
-  <script>
+<div id="app">
+  <!-- select => 也分为单选和多选 -->
+  <select id="" name="" v-model="friust">
+    <option value="苹果">苹果</option>
+    <option value="橘子">橘子</option>
+    <option value="火龙果">火龙果</option>
+    <option value="雪梨">雪梨</option>
+  </select>
+  <h2>{{friust}}</h2>
+
+  <!-- 多选和 checkbox 一样   -->
+  <select name="" id="" v-model="friusts" multiple>
+    <option value="苹果">苹果</option>
+    <option value="橘子">橘子</option>
+    <option value="火龙果">火龙果</option>
+    <option value="雪梨">雪梨</option>
+  </select>
+  <h2>{{friusts}}</h2>
+</div>
+<script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+<script>
     const app = new Vue({
-      el:"#app",
-      data:{
-          friust:""
-      }
+        el: "#app",
+        data: {
+            friust: "",
+            friusts:[]
+        }
     })
-  </script>
+</script>
 </body>
 </html>
