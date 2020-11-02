@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+    <cpn2></cpn2>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+
+    // 注册全局组件的语法糖
+    const cpn = Vue.component('cpn', {
+      template: `
+        <div>
+          <h2>我是全局组件语法糖的写法</h2>
+          </div>
+      `
+    })
+    // 注册局部组件的语法糖
+    const app = new Vue({
+      el: "#app",
+      components: {
+        'cpn2': {
+          template: `
+        <div>
+          <h2>我是局部组件语法糖的写法</h2>
+          </div>
+      `
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

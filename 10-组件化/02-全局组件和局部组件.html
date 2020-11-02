@@ -8,11 +8,46 @@
 </head>
 
 <body>
-  <div id="app"></div>
+  <div id="app">
+    <cpn></cpn>
+    <st></st>
+  </div>
+  <div id="app2">
+    <cpn></cpn>
+    <!-- <st></st> -->
+    <!-- 这个 组件无法起到作用 -->
+  </div>
+  <!-- 可以在 多个Vue中使用 -->
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
+    const cpn = Vue.extend({
+      template: `<div>
+          <h2>hello</h2>
+        </div>`
+    })
+
+    Vue.component('cpn', cpn) // 这样创建的组件是全局组件  可以在多个 Vue 实例中使用
+
+
+    // 创建局部组件
+    const s = Vue.extend({
+      template: `
+        <div>
+            <h2>我是局部组件</h2>
+          </div>
+      `
+    })
+
     const app = new Vue({
-      el: "#app"
+      el: "#app",
+      components: {
+        // 在Vue内部 使用 components 创建的组件 为这个实例的 局部组件 别的实例无法进行共享
+        st: s
+      }
+    })
+
+    const app2 = new Vue({
+      el: '#app2'
     })
   </script>
 </body>

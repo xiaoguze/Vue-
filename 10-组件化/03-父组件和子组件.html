@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="app">
+    <cpn1></cpn1>
+  </div>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+      const cpn2 = Vue.extend({
+      template:`
+        <div>
+            <h2>我是标题2</h2>
+          </div>
+      `
+    })
+    const cpn1 = Vue.extend({
+      template:`
+        <div>
+          <h2>我是标题1</h2>
+          <cpn2></cpn2>
+          </div>
+      `,
+      components:{
+        // 在父组件中 注册子组件
+        cpn2:cpn2
+      }
+    })
+  
+    const app = new Vue({
+      el:"#app",
+      components:{
+        cpn1:cpn1
+      }
+    })
+  </script>
+</body>
+</html>
