@@ -1,19 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
 </head>
+
 <body>
   <div id="app">
-    
+    <cpn @btnclick="itemClick"></cpn>
   </div>
+
+  <template id="cpn">
+    <div>
+      <button v-for="item in categories" @click="btnClick(item)">{{item.name}}</button>
+    </div>
+  </template>
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
+
+    const cpn = {
+      template: "#cpn",
+      data(){
+        return{
+          categories:[
+            {id:"aaa",name:"热门推荐"},
+            {id:"bbb",name:"手机数码"},
+            {id:"ccc",name:"家用家电"},
+            {id:"ddd",name:"电脑办公"}
+          ]
+        }
+      },
+      methods:{
+        btnClick(item){
+          // 使用 this.$emit("事件名" , 传递的数据)  =>  可以使用自定义事件 发送事件 传递给父组件 
+          this.$emit('btnclick',item) 
+        }
+      }
+    }
+
+
     const app = new Vue({
-      el:"#app"
+      el: "#app",
+      components: {
+        cpn
+      },
+      methods:{
+        itemClick(item){
+          console.log(1);
+          console.log(item);
+        }
+      }
     })
   </script>
 </body>
+
 </html>
