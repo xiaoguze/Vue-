@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn :movies="movies" :message="message"></cpn>
+  </div>
+
+  <template id="cpn">
+    <div>
+      <h2>{{movies}}</h2>
+      <h2>{{message}}</h2>
+    </div>
+  </template>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    // 父子通信  父传子 => props
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+
+        }
+      },
+      // props的值有两种方式
+      // 方式1 => 字符串数组 => 数组中的字符串就是传递时的名称
+      // 方式2 => 对象 => 对象可以设置传递时的类型 => 也可以设置默认值等 
+      // props: ["movies", "message"]
+      props: {
+        movies: {
+          // type 可以限制数据的类型
+          // default => 设置这个值的默认值
+          // required => 设置这个值是否必须传递 不传递就会报错
+          type: Array,
+          // 当类型是对象或者数组时 => 默认值必须是一个函数
+          default() {
+            return []
+          },
+          required: true
+        },
+        message: {
+          type: String,
+          default: ""
+        }
+      }
+
+    }
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+          movies: ["海王", "海尔兄弟", "海贼王"],
+          message: "hello"
+        }
+      },
+      components: {
+        cpn
+      }
+    })
+  </script>
+</body>
+
+</html>

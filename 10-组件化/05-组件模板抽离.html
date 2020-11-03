@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+
+
+  <!-- 模板抽离 -->
+  <!-- 使用 script 标签的 type 属性来定义模板 根据id引入这个模板 -->
+  <script id="cpn" type="text/x-template">
+    <div>
+      <h2>
+        script定义模板
+        <cpn2></cpn2>
+      </h2>
+    </div>
+  </script>
+
+  <!--  使用template 来定义模板  根据id引入这个模板 -->
+  <template id="cpn2">
+    <div>
+      <h2>
+        template 定义模板
+      </h2>
+    </div>
+  </template>
+
+
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    Vue.component('cpn',{
+      template:"#cpn",
+      components:{
+        cpn2:{
+          template:"#cpn2"
+        }
+      }
+    })
+    const app = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+
+</html>

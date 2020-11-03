@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>
+        <!-- 组件的数据 必须从 组件的数据中的data 获取  组件的 data 选项害必须是一个函数形式 并且返回一个对象  -->
+        {{message}}
+      </h2>
+    </div>
+  </template>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    // 组件不可以访问 Vue实例中的数据 =>  组件是一个单独功能模块的封装  这个模块有自己的HTML模板,也应该有属于自己的数据data
+
+    Vue.component("cpn", {
+      template: "#cpn",
+      data() {
+        return {
+          message: "hello"
+        }
+      }
+    })
+
+    const app = new Vue({
+      el: "#app"
+    })
+  </script>
+</body>
+
+</html>
