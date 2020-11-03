@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <div>
+      <!-- 父组件访问子组件 -->
+      <!-- 
+        父组件访问子组件 => 使用 $children 或 $refs
+        $children => 是一个数组类型  它包含所有子组件对象
+      -->
+      <cpn></cpn>
+      <cpn></cpn>
+      <cpn2></cpn2>
+      <button @click="printChildren">打印子组件</button>
+    </div>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>我是子组件</h2>
+    </div>
+  </template>
+  <template id="cpn2">
+    <div>
+      <h2>我是另一个子组件</h2>
+    </div>
+  </template>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+          name: "我是第一个子组件"
+        }
+      }
+    }
+    const cpn2 = {
+      template: "#cpn2",
+      data() {
+        return {
+          name: "我是第二个子组件"
+        }
+      }
+    }
+    const app = new Vue({
+      el: "#app",
+      data() {
+        return {
+
+        }
+      },
+      components: {
+        cpn,
+        cpn2
+      },
+      methods: {
+        printChildren() {
+          // 会将组件封装到一个数组中  通过索引值去获取组件
+          for (let c of this.$children) {
+            console.log(c.name);
+          }
+        }
+      }
+    })
+
+    // 上边是 this.$children
+
+
+
+    // 这边是 this.$refs
+
+  </script>
+</body>
+
+</html>

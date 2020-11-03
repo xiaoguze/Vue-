@@ -22,20 +22,20 @@
 
     const cpn = {
       template: "#cpn",
-      data(){
-        return{
-          categories:[
-            {id:"aaa",name:"热门推荐"},
-            {id:"bbb",name:"手机数码"},
-            {id:"ccc",name:"家用家电"},
-            {id:"ddd",name:"电脑办公"}
+      data() {
+        return {
+          categories: [
+            { id: "aaa", name: "热门推荐" },
+            { id: "bbb", name: "手机数码" },
+            { id: "ccc", name: "家用家电" },
+            { id: "ddd", name: "电脑办公" }
           ]
         }
       },
-      methods:{
-        btnClick(item){
+      methods: {
+        btnClick(item) {
           // 使用 this.$emit("事件名" , 传递的数据)  =>  可以使用自定义事件 发送事件 传递给父组件 
-          this.$emit('btnclick',item) 
+          this.$emit('btnclick', item)
         }
       }
     }
@@ -46,8 +46,8 @@
       components: {
         cpn
       },
-      methods:{
-        itemClick(item){
+      methods: {
+        itemClick(item) {
           console.log(1);
           console.log(item);
         }
