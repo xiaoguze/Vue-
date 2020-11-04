@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn>
+      <button>hello</button>
+    </cpn>
+    <cpn>
+      <h2>我是插槽替换的h2</h2>
+    </cpn>
+    <cpn>
+      <a href="">百度一下</a>
+    </cpn>
+    <cpn>
+      <!-- 没有值传入 使用默认值 button -->
+    </cpn>
+    <cpn>
+      <i>哈哈哈</i>
+      <div>块级元素</div>
+      <h4>我是h4元素</h4>
+    </cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>我是组件</h2>
+      <!-- slot => 当我们使用组件时 => 可以在组件内部添加元素  这个插槽用来替换  我们也可以在插槽中添加默认值  -->
+      <slot><button>我是slot的插槽的默认值</button></slot>
+    </div>
+  </template>
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      components: {
+        cpn: {
+          template: "#cpn"
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>
