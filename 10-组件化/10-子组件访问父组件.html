@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <cpn></cpn>
+  </div>
+  <template id="cpn">
+    <div>
+      <h2>我是子组件</h2>
+      <button @click="getParent">获取我的父组件</button>
+      <cpn2></cpn2>
+    </div>
+  </template>
+
+  <template id="cpn2">
+    <div>
+      <h2>我只子组件的另一个子组件</h2>
+      <button @click="getParent">获取我的父组件</button>
+    </div>
+  </template>
+
+  <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      methods: {
+        getParent() {
+          // 可以通过 this.$parent 获取当前组件的父组件
+          console.log(this.$parent.name);
+        }
+      },
+      components: {
+        cpn2: {
+          template: "#cpn2",
+          methods: {
+            getParent() {
+              // 通过 this.$parent => 来获取当前组件的父组件 不是祖先组件
+              console.log(this.$parent.name);
+
+              // 可以通过 this.$rout 来直接 获取Vue实例
+              console.log(this.$root);
+            }
+          }
+        }
+      },
+      data() {
+        return {
+          name: "cpn"
+        }
+      }
+    }
+    const app = new Vue({
+      el: "#app",
+      components: {
+        cpn
+      },
+      data: {
+        name: "hello"
+      }
+    })
+  </script>
+</body>
+
+</html>
