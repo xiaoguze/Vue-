@@ -11,14 +11,21 @@
   <div id="app">
 		<cpn></cpn>
     <cpn>
+			<!-- 可以使用作用域插槽 来让使用数据的 组件中 如何显示 -->
       <template slot-scope="slot">
-				<span v-for="item in slot.data">{{item}}-</span>
+				<!-- 使用 定义的 数据来接受 传入的数据 -->
+					{{slot.data}}
+					<br>
+				<!-- 我们使用 作用域插槽是 需要在外面 搞一个模板 template 包裹 然后需要使用 slot-scope来接受 -->
+				<!-- <span v-for="item in slot.data">{{item}}-</span> -->
+				<span>{{slot.data.join('-')}}</span>
 			</template>
     </cpn>
   </div>
   <template id="cpn">
     <div>
       <p>作用域插槽</p>
+			<!-- 在 slot 中 添加 v-bind:xxx  -->
       <slot :data="yuyanS">
         <ul>
           <li v-for="item in yuyanS">{{item}}</li>
