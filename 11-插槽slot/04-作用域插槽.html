@@ -9,18 +9,21 @@
 
 <body>
   <div id="app">
+		<cpn></cpn>
     <cpn>
-      <a href="">百度一下</a>
-      <button slot="left">我是替换具名插槽left的元素</button>
-      <!-- 在替换的元素上 使用 slot = '具体插槽的name值即可' -->
+      <template slot-scope="slot">
+				<span v-for="item in slot.data">{{item}}-</span>
+			</template>
     </cpn>
   </div>
   <template id="cpn">
     <div>
-      <h2>剧名插槽的使用</h2>
-      <slot></slot>
-      <!-- 给插槽设置一个 name值  这个name 值 需要替换的时候 使用 slot => 去替换 -->
-      <slot name="left"></slot>
+      <p>作用域插槽</p>
+      <slot :data="yuyanS">
+        <ul>
+          <li v-for="item in yuyanS">{{item}}</li>
+        </ul>
+      </slot>
     </div>
   </template>
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
@@ -29,7 +32,12 @@
       el: "#app",
       components: {
         cpn: {
-          template: "#cpn"
+          template: "#cpn",
+          data() {
+            return {
+              yuyanS: ["javascript", "python", "java", "go", "swift", "java"]
+            }
+          }
         }
       }
     })

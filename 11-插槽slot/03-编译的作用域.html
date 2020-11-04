@@ -9,27 +9,33 @@
 
 <body>
   <div id="app">
-    <cpn>
-      <a href="">百度一下</a>
-      <button slot="left">我是替换具名插槽left的元素</button>
-      <!-- 在替换的元素上 使用 slot = '具体插槽的name值即可' -->
-    </cpn>
+    <!-- isShow = true  当组件在哪一个模板中使用 就会在那个模板中寻找变量  -->
+    <cpn v-show="isShow"></cpn>
   </div>
   <template id="cpn">
     <div>
-      <h2>剧名插槽的使用</h2>
-      <slot></slot>
-      <!-- 给插槽设置一个 name值  这个name 值 需要替换的时候 使用 slot => 去替换 -->
-      <slot name="left"></slot>
+      <!-- 作用域插槽 -->
+      <h2>我是组件</h2>
     </div>
   </template>
   <script src="../node_modules/_vue@2.6.12@vue/dist/vue.js"></script>
   <script>
+
     const app = new Vue({
       el: "#app",
+      data() {
+        return {
+          isShow: true
+        }
+      },
       components: {
         cpn: {
-          template: "#cpn"
+          template: "#cpn",
+          data() {
+            return {
+              isShow: false
+            }
+          }
         }
       }
     })
