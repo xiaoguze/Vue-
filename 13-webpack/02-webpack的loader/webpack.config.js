@@ -1,6 +1,7 @@
 const path = require('path'); //路径
 const webpack = require('webpack');
 const htmlWebpackPlugin = require('html-webpack-plugin')
+const uglifyPlugin = require('uglifyjs-webpack-plugin')
 module.exports = {
   entry: "./src/main.js", //路口
   output: {
@@ -61,6 +62,7 @@ module.exports = {
     new htmlWebpackPlugin({
       // 将 index.html 也作为模板打包到 dist 文件夹中
       template:"index.html"
-    })
+    }),
+    new uglifyPlugin()
   ]
 }
