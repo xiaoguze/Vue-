@@ -1,10 +1,12 @@
 const path = require('path'); //路径
+const webpack = require('webpack');
+const htmlWebpackPlugin = require('html-webpack-plugin')
 module.exports = {
   entry: "./src/main.js", //路口
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: "bundle.js",
-    publicPath: 'dist/' // 以后遇到打包 => 所有关于 url的 都会在前面加上前缀  为 dist/xxx
+    // publicPath: 'dist/' // 以后遇到打包 => 所有关于 url的 都会在前面加上前缀  为 dist/xxx
   },
   module: {
     rules: [{
@@ -53,5 +55,12 @@ module.exports = {
     alias: {
       "vue$": "vue/dist/vue.js"
     }
-  }
+  },
+  plugins:[
+    new webpack.BannerPlugin("小泽的学习笔记"),
+    new htmlWebpackPlugin({
+      // 将 index.html 也作为模板打包到 dist 文件夹中
+      template:"index.html"
+    })
+  ]
 }
