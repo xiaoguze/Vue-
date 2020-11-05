@@ -52,16 +52,16 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions:['.css','.js','.vue'],//省略文件的结尾名
+    extensions: ['.css', '.js', '.vue'], //省略文件的结尾名
     alias: {
       "vue$": "vue/dist/vue.js"
     }
   },
-  plugins:[
+  plugins: [
     new webpack.BannerPlugin("小泽的学习笔记"),
     new htmlWebpackPlugin({
       // 将 index.html 也作为模板打包到 dist 文件夹中
-      template:"index.html"
+      template: "index.html"
     }),
     new uglifyPlugin()
   ]
