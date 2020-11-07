@@ -64,5 +64,9 @@ module.exports = {
       template: "index.html"
     }),
     new uglifyPlugin()
-  ]
+  ],
+  devServer: {
+    contentBase: './dist', // 服务的目标 是当前 打包文件
+    inline: true, // 是否进行实时监听变化
+  }
 }

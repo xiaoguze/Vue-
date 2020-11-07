@@ -1,6 +1,7 @@
 <template>
   <div>
     <h2>{{title}}</h2>
+    <h2>hahaha</h2>
   </div>
 </template>
 
