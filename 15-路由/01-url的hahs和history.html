@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <button onclick="changeHash()">改变hash</button>
+  <button onclick="historyClick()">使用history改变路由</button>
+  <button onclick="histroyReplaceClick()">使用history的replace改变路由</button>
+  <button onclick="historyback()">后退</button>
+  <button onclick="historyforword()">前进</button>
+  <button onclick="historygo()">go</button>
+  <script>
+    // url的 hash => 就是锚点(#)  改变 window.localtion 的 href 属性  直接通过 location.hash来改变href => 但是页面不会进行刷新
+    console.log(window.location.href);
+    function changeHash() {
+      window.location.hash = '/foo'
+      console.log(window.location.href);
+    }
+    function historyClick() {
+      // pushState => 添加的路由 可以通过 前后键去访问历史记录
+      history.pushState({}, "hello", "hello")
+
+    }
+    function histroyReplaceClick() {
+      // 使用 history.replaceState 去改变 路由的时候 => 是不会留有历史记录的 所以我们也无法返回
+      history.replaceState({}, "", "home")
+    }
+    function historyback() {
+      //  可以使用 back => 去返回上一个访问的页面
+      history.back()
+    }
+    function historyforword() {
+      //  可以 使用 forword => 去前进上一个浏览的页面
+      history.forward()
+    }
+    function historygo() {
+      //  可以 通过 go(num) => 去控制是否去前进还是后退 前进后退 根据 num这个参数来决定 > 0 就是前进 < 0 就是后退
+      history.go(1)
+    }
+    // 通过 history 去改变 url
+
+
+  </script>
+</body>
+
+</html>
