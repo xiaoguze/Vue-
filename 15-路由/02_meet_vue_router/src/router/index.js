@@ -6,9 +6,7 @@ Vue.use(vueRouter) // 安装插件
 
 
 const routes = [
-  // 配置 路劲和组件的映射关系
-  
-
+  // 配置 路径和组件的映射关系
 ]
 
 
@@ -16,3 +14,6 @@ const routes = [
 const router = new VueRouter({
   routes
 })
+
+// 将 router 对象传入到 vue实例中
+export default router
