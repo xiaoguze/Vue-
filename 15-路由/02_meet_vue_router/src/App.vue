@@ -5,7 +5,7 @@
       增加 replace 属性 => 表示 就是没有 访问记录  可以增加一个属性  =>  active-class => 表示当前 活跃时 的class 赋值的样式
      -->
     <router-link to="/about">关于</router-link>
-    <router-link :to="'/user/' + userId">用户信息</router-link>
+    <router-link :to="/user/ + userId">用户信息</router-link>
     <router-view/>
   </div>
 </template>
@@ -13,7 +13,9 @@
 export default {
   name:"App",
   data(){
-    userId:"zhansan"
+    return{
+      userId:"zhansan"
+    }
   }
 }
 </script>
