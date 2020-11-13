@@ -45,6 +45,9 @@
 						destroyed() {
 							console.log("Vue实例被销毁了")
 						}
+
+						// 当我们使用 keep-alive 时 会多产生两个 生命周期 =>  activated  (活跃的)  deactivated (不活跃的)  并且在呗包裹中组件中才可以使用这两个生命周期
+						// keep-aliv 的属性 =>  include => 字符串或正则表达式 只有匹配的组件才会被缓存   exclude => 字符串或正则表达式 任何匹配的组件都不会呗缓存
         })
     </script>
 </body>
